@@ -1,0 +1,215 @@
+.Plus-Button{
+    border-radius: 500px;
+    height: 25px;
+    width: 25px;
+    padding: 0;
+    background: white;
+    color: #934188;
+    font-size: 16px;
+    border: 1px solid;
+}
+.rt-td {
+    white-space: wrap !important ;
+   
+}
+
+.flexbox {
+    display: flex;
+}
+
+.flex {
+    width: 50%;
+}
+
+.modal .modal-header {
+    padding: 1rem;
+}
+
+.time_picker_modal_header .time_picker_header.meridiem {
+    position: absolute !important;
+    left: 100px !important;
+}
+
+.p1-1 {
+    border-left:1px solid #d7d7d7;
+}
+.clockdate-wrapper {
+    /* background-color: #333; */
+    padding:2rem;
+    /* max-width:350px; */
+    height: auto !important;
+    width:100%;
+    /* text-align:center; */
+    border-radius:5px;
+    margin:0 auto;
+    color:#fff;
+    /* margin-top:15%; */
+}
+#clock{
+    /* background-color:#333; */
+    height: auto !important;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-size:30px;
+    text-shadow:0px 0px 1px #fff;
+    color:#fff;
+}
+#clock span {
+    color:#888;
+    text-shadow:0px 0px 1px #333;
+    font-size:18px;
+    position:relative;
+    /* top:-27px; */
+    /* left:-10px; */
+}
+#date {
+    letter-spacing:3px;
+    font-size:12px;
+    font-family:arial,sans-serif;
+    color:#fff;
+}
+
+.form-control {
+    margin: .3rem 0;
+}
+
+
+.wd-50 {
+    width: 50%;
+    margin: 5px 0;
+}
+
+.font-600 {
+    font-weight: 600;
+}
+
+.h5-modal {
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 15px;;
+}
+
+.flex-end {
+    border-bottom: 1px solid gainsboro;
+    padding-bottom: 5px;
+}
+
+.mg-10 {
+    margin: 10px;
+}
+.inline{
+    display: inline;
+    line-height: 2.6;
+}
+
+.btns-1-1 {
+    margin: 16px 0px;
+    padding: 0px 16px !important;
+    border: 0;
+    border-radius: 500px;
+    line-height: 0;
+}
+.space-between {
+    justify-content: space-between;
+}
+
+.bar-code-adj {
+    max-width: 40%;
+}
+.employee-ids {
+    padding-left: 20px;
+}
+.account-history{
+    font-size: 16px;
+    color: #145388 !important;
+}
+.account-history:hover {
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+.h5-1 {
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 2;
+    margin-top: 20px;
+}
+.text-p1 {
+    color: black;
+    font-weight: bolder;
+}
+.p1-s {
+    font-size: 15px;
+}
+
+ .card-body1 {
+    padding: 1.05rem !important;
+}
+.pd-r-20 {
+    padding-left: 20px !important;
+}
+.pd-l-20 {
+    padding-right: 20px !important;
+}
+.shadow {
+    box-shadow: 4px 8px 16px grey !important
+}
+.ft-16 {
+    font-size: 16px;
+    font-weight: 400 !important;
+}
+.badge.badge-pill {
+    width: 90px;
+}
+.wd-85 {
+    width: 85px;
+    padding: 5px !important;
+}
+.mg-150 {
+    margin-top: 150px;
+}
+.button-center{
+    text-align: center;
+}
+.text-center {
+    display: block;
+    text-align: center !important;
+}
+.ReactTable .rt-thead .rt-resizable-header-content{
+    text-align: center;
+}
+.rt-tbody {
+    text-align: center;
+}
+.time_picker_preview {
+    height: 44px !important;
+}
+.preview_container {
+    position: absolute;
+    left: 39% !important;
+    height: 50px;
+    line-height: 49px;
+    padding-left: 33px;
+}
+.preview_container svg {
+    width: 25px;
+    height: 35px;
+    position: absolute;
+    top: 7px;
+    left: 0;
+    color: blue;
+}
+.react_times_button .wrapper {
+    border: 1px solid #b9b4b4 !important            ;
+}
+.picker_container {
+    margin: 0 5px 20px !important;
+}   
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box{
+    width: 248px !important;
+}
+.react-datepicker__time-container {
+    width: 234px !important;
+}
