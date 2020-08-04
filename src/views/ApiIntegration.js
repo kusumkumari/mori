@@ -2,8 +2,8 @@
 import axios from 'axios';
 
 let API_BASE_URL
-// API_BASE_URL = 'http://zapio-admin.com:8080/api';
-API_BASE_URL = 'http://192.168.0.104:1234/api';
+API_BASE_URL = 'http://zapio-admin.com:8080/api';
+// API_BASE_URL = 'http://192.168.0.104:1234/api';
 
 export let companyId1 = localStorage.getItem("company");
 let companyId = localStorage.getItem("company");

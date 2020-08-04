@@ -60,10 +60,10 @@ class DefaultDashboard extends Component {
       pendingTask: 0,
       offlineDevice: 0,
       onlineDevice: 0,
-      startTime: moment(),
-      startTimeFormat:moment(),
+      startTime: moment().set({ "hour": 0, "minute": 0 }),
+      startTimeFormat: moment().set({ "hour": 0, "minute": 0 }),
       endTime: moment(),
-      endTimeFormat:moment(),
+      endTimeFormat: moment(),
 
     }
   }
@@ -72,11 +72,39 @@ class DefaultDashboard extends Component {
     this.setState({
       endDate: moment(date).toString()
     })
-    this.dashboardMapDevice(this.state.devices, moment(date).toString(), this.state.startTime, this.state.endTime)
+    let startTiming
+    let endTiming
+    if (typeof (this.state.startTime) === "string") {
+      startTiming = this.state.startTime
+    }
+    else {
+      startTiming = moment(this.state.startTime).format("HH:mm")
+    }
+    if (typeof (this.state.endTime) === "string") {
+      endTiming = this.state.endTime
+    }
+    else {
+      endTiming = moment(this.state.endTime).format("HH:mm")
+    }
+    this.dashboardMapDevice(this.state.devices, moment(date).toString(), startTiming, endTiming)
   }
 
   selectDevices = e => {
     const { checked } = this.state
+    let startTiming
+    let endTiming
+    if (typeof (this.state.startTime) === "string") {
+      startTiming = this.state.startTime
+    }
+    else {
+      startTiming = moment(this.state.startTime).format("HH:mm")
+    }
+    if (typeof (this.state.endTime) === "string") {
+      endTiming = this.state.endTime
+    }
+    else {
+      endTiming = moment(this.state.endTime).format("HH:mm")
+    }
     let deviceArray = []
     deviceArray = [...this.state.devices]
     // console.log('checkkkkkkkkkkkkkkkkkkkkkk', e.target.checked, deviceArray)
@@ -84,7 +112,7 @@ class DefaultDashboard extends Component {
       deviceArray.push(parseInt(e.target.name))
       this.setState({ devices: deviceArray, checked: e.target.name })
       // console.log('dddddddddddddd', deviceArray)
-      this.dashboardMapDevice(deviceArray, this.state.endDate, this.state.startTime, this.state.endTime)
+      this.dashboardMapDevice(deviceArray, this.state.endDate, startTiming, endTiming)
     } else {
       console.log(deviceArray)
 
@@ -95,7 +123,7 @@ class DefaultDashboard extends Component {
 
       // console.log('arrrayyyyyyyyyyyyyyyy', deviceArray)
       this.setState({ devices: deviceArray })
-      this.dashboardMapDevice(deviceArray, this.state.endDate, this.state.startTime, this.state.endTime)
+      this.dashboardMapDevice(deviceArray, this.state.endDate, startTiming, endTiming)
     }
     if (localStorage) {
       localStorage.setItem('devicesChecked', JSON.stringify(deviceArray))
@@ -244,18 +272,30 @@ class DefaultDashboard extends Component {
   }
   resetTime = e => {
 
-    this.setState({ startTime: moment(), endTime: moment(), startTimeFormat:moment(), endTimeFormat:moment()})
+    this.setState({ startTime: moment().set({ "hour": 0, "minute": 0 }), endTime: moment(), startTimeFormat: moment().set({ "hour": 0, "minute": 0 }), endTimeFormat: moment() })
     this.dashboardMapDevice(this.state.devices, this.state.endDate)
 
   }
-  handleChangeStartTime=(e)=>{
-    this.setState({startTime:moment(e).format("HH:mm"),startTimeFormat:e})
-    this.dashboardMapDevice(this.state.devices, this.state.endDate, moment(e).format("HH:mm"),this.state.endTime)
+  handleChangeStartTime = (e) => {
+    console.log("ssssssssstttttttt", e, moment(e).format("HH:mm"), this.state.endTime)
+    this.setState({ startTime: moment(e).format("HH:mm"), startTimeFormat: e })
+    this.dashboardMapDevice(this.state.devices, this.state.endDate, moment(e).format("HH:mm"), this.state.endTime)
 
   }
-  handleChangeEndTime=(e)=>{
-    this.setState({endTime:moment(e).format("HH:mm"),endTimeFormat:e})
-    this.dashboardMapDevice(this.state.devices, this.state.endDate, this.state.startTime, moment(e).format("HH:mm"))
+  handleChangeEndTime = (e) => {
+    console.log("eeeeeeeeeeeeeeeennnnnnnnn", e, moment(e).format("HH:mm"), typeof (this.state.startTime))
+
+    this.setState({ endTime: moment(e).format("HH:mm"), endTimeFormat: e })
+    let startTiming
+    if (typeof (this.state.startTime) === "string") {
+      startTiming = this.state.startTime
+    }
+    else {
+      startTiming = moment(this.state.startTime).format("HH:mm")
+    }
+    console.log("sssssssss", startTiming)
+
+    this.dashboardMapDevice(this.state.devices, this.state.endDate, startTiming, moment(e).format("HH:mm"))
 
   }
 
@@ -339,31 +379,31 @@ class DefaultDashboard extends Component {
             </Colxx>
             <Colxx sm="2">
               <Label> <b className="text-primary"> {` ${messages['dashboards.map-start-time']}`}</b></Label>
-               <DatePicker
-                  selected={this.state.startTimeFormat}
-                  onChange={this.handleChangeStartTime}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                  timeCaption=""
-                  timeFormat="HH:mm"
-                  dateFormat="HH:mm"
-                  style={{width:"70%"}}
-                />
+              <DatePicker
+                selected={this.state.startTimeFormat}
+                onChange={this.handleChangeStartTime}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={15}
+                timeCaption=""
+                timeFormat="HH:mm"
+                dateFormat="HH:mm"
+                style={{ width: "70%" }}
+              />
             </Colxx>
 
             <Colxx sm="2">
               <Label> <b className="text-primary"> {` ${messages['dashboards.map-end-time']}`}</b></Label>
               <DatePicker
-                  selected={this.state.endTimeFormat}
-                  onChange={this.handleChangeEndTime}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                  timeCaption=""
-                  timeFormat="HH:mm"
-                  dateFormat="HH:mm"
-                />
+                selected={this.state.endTimeFormat}
+                onChange={this.handleChangeEndTime}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={15}
+                timeCaption=""
+                timeFormat="HH:mm"
+                dateFormat="HH:mm"
+              />
             </Colxx>
             <Colxx sm="1" style={{ paddingTop: "28px", fontSize: 'x-large', }}>
               {/* <Tooltip title="Reset Time" > */}
@@ -375,7 +415,7 @@ class DefaultDashboard extends Component {
                 onClick={this.resetTime}
               >
                 <RestoreIcon />
-                {'組み替える'}
+                {'リセット'}
               </Fab>
               {/* </Tooltip> */}
             </Colxx>
