@@ -16,7 +16,7 @@
     "formik": "^1.5.1",
     "google-map-react": "^1.1.5",
     "google-maps-react": "^2.0.2",
-    "moment": "2.22.2",
+    "moment": "2.29.2",
     "moment-timezone": "^0.5.27",
     "mousetrap": "^1.6.3",
     "rc-slider": "^8.6.1",
